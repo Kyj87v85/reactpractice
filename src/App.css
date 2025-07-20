@@ -1,0 +1,248 @@
+/* 전체 레이아웃 */
+.app-container {
+  display: flex;
+  max-width: 1000px;
+  margin: 40px auto;
+  gap: 40px;
+  padding: 0 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fafafa;
+  color: #202124;
+  min-height: 80vh;
+  box-sizing: border-box;
+}
+
+.main-section {
+  flex: 2;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(32, 33, 36, 0.15);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar {
+  flex: 1;
+  background-color: #f5f7fa;
+  border-radius: 12px;
+  padding: 30px 25px;
+  color: #444;
+  box-shadow: 0 4px 12px rgba(32, 33, 36, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h2 {
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #1a73e8;
+}
+
+.sidebar p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.sidebar h3 {
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #3c4043;
+}
+
+/* 최근 기록 카드 */
+.history-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.history-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.history-card img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.history-card div {
+  text-align: left;
+  overflow: hidden;
+}
+
+.history-card strong {
+  display: block;
+  font-size: 1rem;
+  color: #1a73e8;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.history-card p {
+  margin: 2px 0 0;
+  font-size: 0.85rem;
+  color: #666;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+/* 진행 단계 프로그레스바 */
+.progress-steps {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  user-select: none;
+  width: 100%;
+  max-width: 720px;
+  gap: 12px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  max-width: 140px;
+  color: #b0b0b0;
+  font-size: 0.85rem;
+  min-width: 100px;
+  transition: color 0.3s ease;
+}
+
+.step .circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2.5px solid #b0b0b0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: 600;
+  background-color: white;
+  color: #b0b0b0;
+  transition: all 0.3s ease;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.step.active .circle {
+  border-color: #1a73e8;
+  color: #1a73e8;
+  font-weight: 700;
+  background-color: #e8f0fe;
+  box-shadow: 0 0 10px rgba(26, 115, 232, 0.6);
+}
+
+.step.completed .circle {
+  border-color: #34a853;
+  background-color: #34a853;
+  color: white;
+}
+
+.step .label {
+  white-space: normal;
+  font-size: 0.75rem;
+  max-height: 3.6em;
+  overflow: hidden;
+  line-height: 1.2em;
+  margin: 0 8px;
+  color: inherit;
+  text-align: center;
+}
+
+.step .line {
+  position: absolute;
+  top: 17px;
+  right: -50%;
+  height: 3px;
+  width: 100%;
+  background-color: #b0b0b0;
+  z-index: 1;
+  transition: background-color 0.3s ease;
+  border-radius: 2px;
+}
+
+.step.completed .line {
+  background-color: #34a853;
+}
+
+.step:last-child .line {
+  display: none;
+}
+
+/* 예측 상태 텍스트 */
+.status-text {
+  font-size: 1.1rem;
+  margin-top: 20px;
+  color: #666;
+  text-align: center;
+  white-space: pre-wrap;
+  word-break: keep-all;
+  max-width: 90%;
+}
+
+/* 로딩 스피너 */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 예측 시작 버튼 */
+.predict-btn {
+  padding: 14px 48px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #1a73e8, #4285f4);
+  border: none;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(26, 115, 232, 0.6);
+  display: block;
+  margin: 10px auto 0 auto;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.predict-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(26, 115, 232, 0.8);
+}
+
+.predict-btn:disabled {
+  background: #a1c2fa;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
